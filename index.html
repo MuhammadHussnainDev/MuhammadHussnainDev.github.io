@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Hussnain Shaker — Software &amp; SaaS</title>
+  <meta name="description" content="Independent software consultancy specialising in SaaS products, web applications, and cloud-native digital solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --aurora-1: #0d0d1a;
+      --aurora-2: #0a0a1f;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.10);
+      --glass-border-hover: rgba(255, 255, 255, 0.22);
+      --text-primary: #f0f0ff;
+      --text-secondary: rgba(220, 220, 255, 0.60);
+      --text-muted: rgba(200, 200, 240, 0.38);
+      --accent-violet: #7c3aed;
+      --accent-cyan: #06b6d4;
+      --accent-pink: #ec4899;
+      --accent-emerald: #10b981;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--aurora-1);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Aurora Background ─────────────────────────────────── */
+    .aurora-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      animation: drift 18s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .orb-1 {
+      width: 70vw;
+      height: 70vw;
+      max-width: 900px;
+      max-height: 900px;
+      background: radial-gradient(circle, #4f0bbf 0%, transparent 70%);
+      top: -20%;
+      left: -15%;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 55vw;
+      height: 55vw;
+      max-width: 700px;
+      max-height: 700px;
+      background: radial-gradient(circle, #0e7490 0%, transparent 70%);
+      top: 10%;
+      right: -10%;
+      animation-delay: -6s;
+    }
+
+    .orb-3 {
+      width: 45vw;
+      height: 45vw;
+      max-width: 600px;
+      max-height: 600px;
+      background: radial-gradient(circle, #be185d 0%, transparent 70%);
+      bottom: -10%;
+      left: 25%;
+      animation-delay: -12s;
+    }
+
+    @keyframes drift {
+      0%   { transform: translate(0, 0) scale(1); }
+      33%  { transform: translate(4%, 3%) scale(1.06); }
+      66%  { transform: translate(-3%, 5%) scale(0.97); }
+      100% { transform: translate(2%, -3%) scale(1.03); }
+    }
+
+    /* ─── Noise Overlay ─────────────────────────────────────── */
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ─── Main Layout ────────────────────────────────────────── */
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─── Section 1: Hero ────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem;
+    }
+
+    .hero-card {
+      max-width: 760px;
+      width: 100%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 3.5rem 3rem;
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04) inset,
+        0 32px 80px rgba(0,0,0,0.55),
+        0 0 120px rgba(124, 58, 237, 0.12);
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(36px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.10);
+      border: 1px solid rgba(6, 182, 212, 0.22);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero-name {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #ffffff 0%, rgba(180,180,255,0.85) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(90deg, #a78bfa, #67e8f9, #f9a8d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 0.975rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-violet), var(--accent-cyan));
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+      opacity: 0.7;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+    }
+
+    .meta-pill i {
+      width: 13px;
+      height: 13px;
+      opacity: 0.7;
+    }
+
+    .scroll-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 3rem;
+      opacity: 0.35;
+      animation: bounce-gentle 2.5s ease-in-out infinite;
+    }
+
+    .scroll-hint span {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    @keyframes bounce-gentle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ─── Section 2: Products ────────────────────────────────── */
+    .products {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 8rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 0%, rgba(180,160,255,0.80) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.85rem;
+    }
+
+    .section-sub {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 760px;
+    }
+
+    .product-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.25rem 2rem;
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.03) inset,
+        0 24px 60px rgba(0,0,0,0.45);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+      cursor: default;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.35s; }
+    .product-card:nth-child(2) { animation-delay: 0.50s; }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--glass-border-hover);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 32px 80px rgba(0,0,0,0.55),
+        0 0 60px var(--card-glow, rgba(124, 58, 237, 0.20));
+    }
+
+    .card-glow-accent {
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 55%;
+      height: 55%;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .product-card:nth-child(1) { --card-glow: rgba(124, 58, 237, 0.25); }
+    .product-card:nth-child(2) { --card-glow: rgba(16, 185, 129, 0.25); }
+
+    .product-card:nth-child(1) .card-glow-accent { background: #7c3aed; }
+    .product-card:nth-child(2) .card-glow-accent { background: #10b981; }
+
+    .card-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .product-card:nth-child(1) .card-icon-wrap {
+      background: rgba(124, 58, 237, 0.15);
+      border: 1px solid rgba(124, 58, 237, 0.30);
+      box-shadow: 0 0 24px rgba(124, 58, 237, 0.20);
+    }
+
+    .product-card:nth-child(2) .card-icon-wrap {
+      background: rgba(16, 185, 129, 0.13);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      box-shadow: 0 0 24px rgba(16, 185, 129, 0.18);
+    }
+
+    .card-icon-wrap i {
+      width: 24px;
+      height: 24px;
+    }
+
+    .product-card:nth-child(1) .card-icon-wrap i { color: #a78bfa; }
+    .product-card:nth-child(2) .card-icon-wrap i { color: #6ee7b7; }
+
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .product-card:nth-child(1) .coming-soon-badge {
+      color: #c4b5fd;
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(124, 58, 237, 0.28);
+    }
+
+    .product-card:nth-child(2) .coming-soon-badge {
+      color: #6ee7b7;
+      background: rgba(16, 185, 129, 0.10);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .badge-ring {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      animation: pulse-ring 2s ease-in-out infinite;
+    }
+
+    .product-card:nth-child(1) .badge-ring { background: #a78bfa; box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.5); }
+    .product-card:nth-child(2) .badge-ring { background: #6ee7b7; box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.5); }
+
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.55); }
+      70%  { box-shadow: 0 0 0 7px rgba(167, 139, 250, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0); }
+    }
+
+    .product-card:nth-child(2) .badge-ring {
+      animation-name: pulse-ring-green;
+    }
+
+    @keyframes pulse-ring-green {
+      0%   { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.55); }
+      70%  { box-shadow: 0 0 0 7px rgba(110, 231, 183, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0); }
+    }
+
+    .product-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .product-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .card-bottom-line {
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      border-radius: 1px;
+    }
+
+    .product-card:nth-child(1) .card-bottom-line {
+      background: linear-gradient(90deg, transparent, rgba(124,58,237,0.5), transparent);
+    }
+
+    .product-card:nth-child(2) .card-bottom-line {
+      background: linear-gradient(90deg, transparent, rgba(16,185,129,0.45), transparent);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero-card {
+        padding: 2.5rem 1.75rem;
+        border-radius: 20px;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-meta {
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Aurora background -->
+  <div class="aurora-bg" aria-hidden="true">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <main>
+
+    <!-- ── Section 1: Hero ── -->
+    <section class="hero" id="hero">
+      <div class="hero-card">
+        <div class="hero-eyebrow">Available for Projects</div>
+
+        <h1 class="hero-name">Muhammad Hussnain Shaker</h1>
+
+        <p class="hero-tagline">Engineering SaaS Products &amp; Scalable Digital Solutions</p>
+
+        <div class="hero-divider"></div>
+
+        <p class="hero-sub">
+          Independent software consultancy specialising in web applications, mobile tools, 
+          and cloud-native SaaS products — built for performance, designed for growth.
+        </p>
+
+        <div class="hero-meta">
+          <span class="meta-pill">
+            <i data-lucide="code-2"></i>
+            Full-Stack Development
+          </span>
+          <span class="meta-pill">
+            <i data-lucide="layers"></i>
+            SaaS Products
+          </span>
+          <span class="meta-pill">
+            <i data-lucide="zap"></i>
+            Sole Proprietorship
+          </span>
+        </div>
+
+        <div class="scroll-hint" aria-hidden="true">
+          <span>Products</span>
+          <i data-lucide="chevrons-down" style="width:16px;height:16px;"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 2: Products ── -->
+    <section class="products" id="products">
+      <div class="section-header">
+        <span class="section-label">In Development</span>
+        <h2 class="section-title">Upcoming Products</h2>
+        <p class="section-sub">
+          Two focused tools built to solve real problems — currently in active development.
+        </p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Card 1 -->
+        <div class="product-card">
+          <div class="card-glow-accent"></div>
+          <div class="card-icon-wrap">
+            <i data-lucide="wallet"></i>
+          </div>
+          <div class="coming-soon-badge">
+            <span class="badge-ring"></span>
+            Coming Soon
+          </div>
+          <h3 class="product-name">MyMonthlyBudgetPlan</h3>
+          <p class="product-desc">
+            A smart personal finance tool that helps you plan, track, and optimise 
+            your monthly budget — built for clarity and control.
+          </p>
+          <div class="card-bottom-line"></div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="product-card">
+          <div class="card-glow-accent"></div>
+          <div class="card-icon-wrap">
+            <i data-lucide="sigma"></i>
+          </div>
+          <div class="coming-soon-badge">
+            <span class="badge-ring"></span>
+            Coming Soon
+          </div>
+          <h3 class="product-name">Real Math Master</h3>
+          <p class="product-desc">
+            An interactive mathematics learning platform designed to build genuine 
+            problem-solving skills through structured, engaging practice.
+          </p>
+          <div class="card-bottom-line"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; <span id="yr"></span> Muhammad Hussnain Shaker &nbsp;·&nbsp; mhussnainshaker.me
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
